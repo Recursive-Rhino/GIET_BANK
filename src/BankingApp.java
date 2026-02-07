@@ -117,13 +117,11 @@ public class BankingApp {
         }
     }
 
-    // Generate account number
     static String generateAccountNumber() {
         Random r = new Random();
         return "ACC" + (10000000 + r.nextInt(90000000));
     }
 
-    // Open new account
     static void openAccount() throws SQLException {
         System.out.print("Account Type (SAVINGS/CURRENT): ");
         String type = sc.nextLine();
@@ -159,7 +157,6 @@ public class BankingApp {
         }
     }
 
-    // Deposit money
     static void deposit() throws SQLException {
         System.out.print("Enter Account Number: ");
         String accNo = sc.nextLine();
@@ -179,8 +176,6 @@ public class BankingApp {
             System.out.println("Account not found!");
         }
     }
-
-    // Withdraw money
     static void withdraw() throws SQLException {
         System.out.print("Enter Account Number: ");
         String accNo = sc.nextLine();
@@ -188,7 +183,6 @@ public class BankingApp {
         double amount = sc.nextDouble();
         sc.nextLine();
 
-        // First check balance
         String checkSql = "SELECT balance FROM accounts WHERE account_number = ?";
         PreparedStatement checkPs = conn.prepareStatement(checkSql);
         checkPs.setString(1, accNo);
